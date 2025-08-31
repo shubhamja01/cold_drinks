@@ -75,11 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'bpxjftkpc1dspgx2p5et-mysql.services.clever-cloud.com',
-	'username' => 'upz3dbjzmz3biva0',
-	'password' => 'exR5hO92ubaAmGZouhMG',
-	'database' => 'bpxjftkpc1dspgx2p5et',
+	'hostname' => getenv('DB_HOST'),
+	'username' => getenv('DB_USER'),
+	'password' => getenv('DB_PASS'),
+	'database' => getenv('DB_NAME'),
 	'dbdriver' => 'mysqli',
+	'port'     => getenv('DB_PORT') ?: 3306,
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

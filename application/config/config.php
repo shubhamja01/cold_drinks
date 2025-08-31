@@ -1,5 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+// Auto-detect with proxy support (Render sits behind HTTPS proxy)
+$scheme = (
+    isset($_SERVER['HTTP_X_FORWARDED_PROTO']) ? $_SERVER['HTTP_X_FORWARDED_PROTO'] :
+    ((isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] == 1)) ? 'https' : 'http')
+);
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$config['base_url'] = getenv('BASE_URL') ?: "{$scheme}://{$host}/";
 
 /*
 |--------------------------------------------------------------------------

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ci3-on-render
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: BASE_URL
+        value: ""   # optional; empty = auto
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASS
+        sync: false
+    healthCheckPath: /
